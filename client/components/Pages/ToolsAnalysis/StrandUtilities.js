@@ -119,7 +119,7 @@ export default class StrandUtilities extends React.Component {
 
 			if(b == "A" || b == 'G')
 				curr_type = 'purine'
-			if(b == 'T') || b == 'C')
+			if(b == 'T' || b == 'C')
 				curr_type = 'pyrimidine'
 
 			if ( (curr_type == 'purine' && prev_type == 'pyrimidine') || (curr_type == 'pyrimidine' && prev_type == 'purine') )
