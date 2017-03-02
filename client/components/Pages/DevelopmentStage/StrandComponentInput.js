@@ -158,59 +158,60 @@ export default class StrandComponentInput extends React.Component {
 		}
 		return(			
 		<Row>
-			<div className = "col s0 m1"></div>
-				<div className = "col s12 m10">			
-					<div style = {headerStyle}> 
-						<i style = {{position:"relative",top:"6px",marginRight:"10px"}}className="material-icons">input</i>	
-						Strand Component Input
-					</div>
-					<div style = {bodyStyle}>
-						<div style = {inputcontainer}>
-							<Row>
-								<Input 
-									label = "Name"
-									s = {10}
-									type = "text"
-									className="validate"
-									onKeyPress={this._handleKeyPress} 
-									onChange = {this.handleName} 
-								/>
+			<div className = " col s0 m1"></div>
 
-								<div name = "rad" className = "col s12 m6 l2">
-									<p for = "rad" style = {{color:"#9e9e9e",paddingLeft:"10px",whiteSpace:"nowrap",fontSize:"10px"}}> 
-										Complement Exists:
-									</p>
-									<Input 					
-										name="YesNo" 		
-										defaultChecked = {(this.state.complement== "true")}  
-										value={"true"}  
-										type="radio"
-										label = "Yes"
-										onClick = {this.handleComplement} 
-									/>
-									<Input
-										name="YesNo" 
-										label = "No"
-										value={"false"} 
-										type="radio" 
-										onClick = {this.handleComplement}
-									/> 
-								</div>
-							</Row>
-
-							<Input
-								value = {this.state.sequence} 
+			<div className = "animated fadeIn col s12 m10">			
+				<div style = {headerStyle}> 
+					<i style = {{position:"relative",top:"6px",marginRight:"10px"}}className="material-icons">input</i>	
+					Strand Component Input
+				</div>
+				<div style = {bodyStyle}>
+					<div style = {inputcontainer}>
+						<Row>
+							<Input 
+								label = "Name"
+								s = {10}
+								type = "text"
+								className="validate"
 								onKeyPress={this._handleKeyPress} 
-								label = 'Sequence i.e. ATCGo ( "o": blank base):'
-								s = {12}
-								onChange = {this.handleSequence} 
+								onChange = {this.handleName} 
 							/>
 
-							{this.renderButton()}
-						</div>							
-					</div>
+							<div name = "rad" className = "col s12 m6 l2">
+								<p for = "rad" style = {{color:"#9e9e9e",paddingLeft:"10px",whiteSpace:"nowrap",fontSize:"10px"}}> 
+									Complement Exists:
+								</p>
+								<Input 					
+									name="YesNo" 		
+									defaultChecked = {(this.state.complement== "true")}  
+									value={"true"}  
+									type="radio"
+									label = "Yes"
+									onClick = {this.handleComplement} 
+								/>
+								<Input
+									name="YesNo" 
+									label = "No"
+									value={"false"} 
+									type="radio" 
+									onClick = {this.handleComplement}
+								/> 
+							</div>
+						</Row>
 
-					<StrandComponentsDisplay status = {this.props.status} Component_list = {this.props.Component_list}/>
+						<Input
+							value = {this.state.sequence} 
+							onKeyPress={this._handleKeyPress} 
+							label = 'Sequence i.e. ATCGo ( "o": blank base):'
+							s = {12}
+							onChange = {this.handleSequence} 
+						/>
+
+						{this.renderButton()}
+					</div>							
+				</div>
+
+				<StrandComponentsDisplay status = {this.props.status} Component_list = {this.props.Component_list}/>
 
 			</div>
 		</Row>

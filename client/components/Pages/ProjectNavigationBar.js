@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-import image3 from "../../images/Icons/AnalysisIcon.png";
-import image2 from "../../images/Icons/SequencerIcon.png";
-import image1 from "../../images/Icons/WorkspaceIcon.png";
+import image3 from "../../Images/Icons/AnalysisIcon.png";
+import image2 from "../../Images/Icons/SequencerIcon.png";
+import image1 from "../../Images/Icons/WorkspaceIcon.png";
 
 
 
@@ -16,6 +16,7 @@ export default class ProjectNagivationBar extends React.Component {
 	{
 		const ulStyle = {
 			listStyleType:"none",
+			padding:"10",
 			backgroundColor:"#292B2D",
 			textAlign:"center"
 		}
@@ -30,13 +31,16 @@ export default class ProjectNagivationBar extends React.Component {
 		}
 		return(
 			<div style = {ulStyle}>
+
 				<div style = {liStyle}>   
 					<Link to="Project/Workspace" style = {linkstyle} className = "hvr-grow" > 
 						<span style = {{color:"white",paddingRight:"20px"}}>Workspace </span>	
 						<img src = {image1} style = {{height:"35px",width:"35px"}}/>  
 					</Link>
 				</div>
+
 				<div style = {{width:"70px",display:"inline-block"}}></div>
+
 				<div style = {liStyle}>  
 
 					<Link to = "Project/Analysis" style = {linkstyle} className = "hvr-grow" >    

@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
 
-import StrandUtilities from '../pages/ToolsAnalysis/StrandUtilities';
+import StrandUtilities from '../Pages/ToolsAnalysis/StrandUtilities';
 
-import StrandComparer from '../pages/ToolsAnalysis/StrandComparer';
+import StrandComparer from '../Pages/ToolsAnalysis/StrandComparer';
 
-import StrandMeltingPt from '../pages/ToolsAnalysis/StrandMeltingPt';
+import StrandMeltingPt from '../Pages/ToolsAnalysis/StrandMeltingPt';
 
-import FooterSection from '../pages/FooterSection';
+import FooterSection from '../Pages/FooterSection';
 
 import {Row} from 'react-materialize';
 

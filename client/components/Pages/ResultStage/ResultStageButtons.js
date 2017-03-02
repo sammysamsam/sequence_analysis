@@ -99,7 +99,7 @@ export default class ResultStageButtons extends React.Component {
 			)
 		else
 			return (	
-				<div style = {containerStyle}>
+				<div style = {containerStyle} className = "animated fadeIn">
 					
 					<div style = {analysisButtonStyle} className= "hvr-underline-from-center" onClick = {this.callfullcomparelist}>  
 						

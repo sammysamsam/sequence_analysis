@@ -58,6 +58,7 @@ export default class ResultStateLayout extends React.Component {
 			marginTop:"2px",
 			minHeight:"588px",
 			borderWidth:"7px 0px 0px 0px",
+			boxShadow:" 9px 0px 12px -4px rgba(0,0,0,0.56)",	
 			zIndex:"10"
 		}
 		return(
