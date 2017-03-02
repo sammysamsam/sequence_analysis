@@ -5,7 +5,7 @@ import {Input,Button,Row,Table} from 'react-materialize';
 import * as StrandAction from "../../Actions/StrandAction";
 
 //STORE
-import toolsAnalysisStore from "../../Store/toolsAnalysisStore";
+import ToolsAnalysisStore from "../../Store/ToolsAnalysisStore";
 
 
 export default class StrandComparer extends React.Component {

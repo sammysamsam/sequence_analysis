@@ -5,7 +5,7 @@ import {Input,Button,Row} from 'react-materialize';
 import * as StrandAction from "../../Actions/StrandAction";
 
 //STORE
-import toolsAnalysisStore from "../../Store/toolsAnalysisStore";
+import ToolsAnalysisStore from "../../Store/toolsAnalysisStore";
 
 
 export default class StrandMeltingPt extends React.Component {
