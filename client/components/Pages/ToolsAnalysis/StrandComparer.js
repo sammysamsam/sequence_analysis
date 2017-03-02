@@ -15,7 +15,7 @@ export default class StrandComparer extends React.Component {
 		super();
 
 		this.state = {
-			output:toolsAnalysisStore.get_Compare_Results() , 
+			output:ToolsAnalysisStore.get_Compare_Results() , 
 			name1:"A",
 			sequence1:"",
 			fiveprime1:"5' to 3'",
@@ -35,16 +35,16 @@ export default class StrandComparer extends React.Component {
 	}
 	componentWillMount() 
 	{
-		toolsAnalysisStore.on("Update_ToolsAnalysis_Compare",this.updateresults);		
+		ToolsAnalysisStore.on("Update_ToolsAnalysis_Compare",this.updateresults);		
 	}
 	componentWillUnmount() 
 	{
-		toolsAnalysisStore.removeListener("Update_ToolsAnalysis_Compare",this.updateresults);	
+		ToolsAnalysisStore.removeListener("Update_ToolsAnalysis_Compare",this.updateresults);	
 	}
 	//
 	updateresults()
 	{
-		this.setState({ output:toolsAnalysisStore.get_Compare_Results()	});
+		this.setState({ output:ToolsAnalysisStore.get_Compare_Results()	});
 	}
 	//
 

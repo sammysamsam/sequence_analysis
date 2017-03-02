@@ -27,17 +27,17 @@ export default class StrandMeltingPt extends React.Component {
 ////
 	componentWillMount() 
 	{
-		toolsAnalysisStore.on("Update_ToolsAnalysis_MeltingPoint",this.handleOutput);		
+		ToolsAnalysisStore.on("Update_ToolsAnalysis_MeltingPoint",this.handleOutput);		
 	}
 	componentWillUnmount() 
 	{
-		toolsAnalysisStore.removeListener("Update_ToolsAnalysis_MeltingPoint",this.handleOutput);	
+		ToolsAnalysisStore.removeListener("Update_ToolsAnalysis_MeltingPoint",this.handleOutput);	
 	}
 
 /////
 	handleOutput()
 	{
-		this.setState({output:toolsAnalysisStore.get_Melting_Pt()})
+		this.setState({output:ToolsAnalysisStore.get_Melting_Pt()})
 	}
 
 	handleInput(input)
@@ -69,7 +69,7 @@ export default class StrandMeltingPt extends React.Component {
 		{
 
 		}
-		//toolsAnalysisStore.
+		//ToolsAnalysisStore.
 	}
 
 	sequencechecker(e)
