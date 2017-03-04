@@ -137,7 +137,7 @@ export default class StrandComponentInput extends React.Component {
 	render()
 	{
 		let bodyStyle = {
-			padding:"15px 55px 20px 55px",
+			padding:"15px 15px 20px 15px",
 			marginTop:"1px",
 			color:"#37474f",
 		}
@@ -150,10 +150,11 @@ export default class StrandComponentInput extends React.Component {
 		}
 
 		let inputcontainer = {
-			margin:"20px",
+			margin:"10px",
 			border:"solid 1px grey",
 			background:"#cfd8dc",
-			padding:"20px"
+			padding:"20px",
+			textAlign:"center"
 
 		}
 		return(			

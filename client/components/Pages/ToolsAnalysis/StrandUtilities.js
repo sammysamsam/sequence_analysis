@@ -1,6 +1,5 @@
 import React from "react";
-import {Input} from 'react-materialize';
-
+import {Input,Row} from 'react-materialize';
 export default class StrandUtilities extends React.Component {
 
 	constructor()
@@ -180,54 +179,57 @@ export default class StrandUtilities extends React.Component {
 		let labelStyle = {
 			padding:"10px",
 			fontFamily: "'Anaheim', serif " , 
+
 		}
 			return (
 				<div style = {bodyStyle}>
-						<Input
-							s={12}
-							value = {this.state.blueprint} 
-							label="Strand Sequence (i.e.) ATCG"
-							type = "text"
-							onChange = {this.handleinput}
+				<Row>
+					<Input
+						s={12}
+						value = {this.state.blueprint} 
+						label="Strand Sequence (i.e.) ATCG"
+						type = "text"
+						onChange = {this.handleinput}
+					/>
+					<div style = {labelStyle} className = "col s12"> 
+						<Input 					
+							name="comp/rev" 		
+							defaultChecked = {false} 
+							value="rev"  
+							type="radio"
+							label = "Reverse"
+							onClick = {this.outputpicker} 
 						/>
-						<div style = {labelStyle} className = "col s12"> 
-							<Input 					
-								name="comp/rev" 		
-								defaultChecked = {false} 
-								value="rev"  
-								type="radio"
-								label = "Reverse"
-								onClick = {this.outputpicker} 
-							/>
-							<Input 					
-								name="comp/rev" 		
-								defaultChecked = {true} 
-								value="comp" 
-								type="radio"
-								label = "Complement"
-								onClick = {this.outputpicker} 
-							/>
-							<Input 					
-								name="comp/rev" 		
-								defaultChecked = {false} 
-								value="poly"  
-								type="radio"
-								label = "Highlight Poly-Purine"
-								onClick = {this.outputpicker} 
-							/>
-							<Input 					
-								name="comp/rev" 		
-								defaultChecked = {false}
-								value="alt"  
-								type="radio"
-								label = "Highlight Alternating Purine-Pyrimidine (vice versa)"
-								onClick = {this.outputpicker} 
-							/>
-						</div>
-					<div style = {{background:"rgba(0, 0, 0,.15)",padding:"15px",minHeight:"110px",overflowWrap:"break-word",marginTop:"160px"}}> 
+						<Input 					
+							name="comp/rev" 		
+							defaultChecked = {true} 
+							value="comp" 
+							type="radio"
+							label = "Complement"
+							onClick = {this.outputpicker} 
+						/>
+						<Input 					
+							name="comp/rev" 		
+							defaultChecked = {false} 
+							value="poly"  
+							type="radio"
+							label = "Highlight Poly-Purine"
+							onClick = {this.outputpicker} 
+						/>
+						<Input 					
+							name="comp/rev" 		
+							defaultChecked = {false}
+							value="alt"  
+							type="radio"
+							label = "Highlight Alternating Purine-Pyrimidine"
+							onClick = {this.outputpicker} 
+						/>
+					</div>
+
+					<div className = "col s12" style = {{background:"rgba(0, 0, 0,.15)",padding:"15px",minHeight:"110px",overflowWrap:"break-word"}}> 
 						{this.renderOutput()}
 					</div>
-					
+				</Row>
 				</div>
 
 			)

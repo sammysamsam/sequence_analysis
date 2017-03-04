@@ -271,6 +271,7 @@ export default class StrandComparer extends React.Component {
 							/>
 						</div>
 						<div className = "col s1"></div>
+
 						<div style = {labelStyle} className = "col s10"> 
 							<Input
 								label="Name (Default: B)" 
@@ -312,7 +313,8 @@ export default class StrandComparer extends React.Component {
 								onChange = {this.handleinput2}
 							/>
 						</div>	
-						<div style = {{width:"290px" , margin:"auto"}}>
+
+						<div className = "col s12"style = {{textAlign:"center"}}>
 							<Button onClick = {this.clear}> CLEAR</Button>
 							<Button style = {{marginLeft:"20px"}} onClick = {this.mismatchfunction}> SUBMIT</Button>
 						</div>

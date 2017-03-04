@@ -121,13 +121,13 @@ export default class StrandComponentInput extends React.Component {
 		if(!this.props.status)
 			return(
 				<div >
-					<Button style = {{margin:"15px 0px 5px 15px",fontSize:"12px"}} onClick = {this.pop}> 
-						Delete Recent Component
+					<Button style = {{margin:"15px 0px 5px 15px",fontSize:"10px"}} onClick = {this.pop}> 
+						Delete
 					</Button>
-					<Button style = {{margin:"15px 0px 5px 5px",fontSize:"12px"}} onClick = {this.clear}> 
+					<Button style = {{margin:"15px 0px 5px 5px",fontSize:"10px"}} onClick = {this.clear}> 
 						Clear All
 					</Button>
-					<Button style = {{margin:"15px 0px 5px 20px",fontSize:"13px"}} 
+					<Button style = {{margin:"15px 0px 5px 20px",fontSize:"10px"}} 
 						onClick = {this.tokenprocessor.bind(this)}> 
 						Submit 
 					</Button>

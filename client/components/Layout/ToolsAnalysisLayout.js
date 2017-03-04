@@ -67,8 +67,7 @@ export default class ToolsAnalysis extends React.Component {
 			border:"solid 1px grey"
 		}
 		let tabContainer = {
-			width:"500px",
-			margin:"auto",
+			textAlign:"center",
 			paddingBottom:"40px",
 			fontSize:"13px",
 			color:"#607d8b",
@@ -109,7 +108,6 @@ export default class ToolsAnalysis extends React.Component {
 		let headerStyle = {
 			boxShadow:" 6px 9px 12px -4px rgba(0,0,0,0.56)",
 			backgroundColor:"#546e7a",
-			height:"100px",
 			marginBottom:"0",
 			padding:"35px",
 			color:"white",
@@ -130,7 +128,7 @@ export default class ToolsAnalysis extends React.Component {
 								home
 							</i>
 
-							Optimizing Hybridization AnalYsis Of Nucleotides Program 
+							<span className = "hide-on-small-only">Optimizing Hybridization AnalYsis Of Nucleotides Program </span>
 						
 						</Link>
 				</div>
@@ -145,7 +143,7 @@ export default class ToolsAnalysis extends React.Component {
 								</i>
 								ANALYSIS & TOOLS
 
-								<span style = {{color:"white",fontStyle:"italic",paddingLeft:"20px",fontSize:"13px"}}> 
+								<span className = "hide-on-med-and-down"style = {{color:"white",fontStyle:"italic",paddingLeft:"20px",fontSize:"13px"}}> 
 									Analyze and manipulate your sequences. 
 								</span>
 							</h4>
