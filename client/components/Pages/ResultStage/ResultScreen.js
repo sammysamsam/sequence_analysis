@@ -12,15 +12,12 @@ export default class ResultScreen extends React.Component {
 
 	//
 
-
 	loadprintscreen(){
 		let printedStrandsContainerStyle = {
 			fontFamily:"'Anaheim',serif",
 			padding:"25px",
-			height:"712px",
 			fontWeight:"bold"
 		}
-    	
     	let results = this.props.results[1];
 		return (
 			<div style = {printedStrandsContainerStyle}>
@@ -59,6 +56,7 @@ export default class ResultScreen extends React.Component {
     		background:"rgba(255,255,255,.5)",
     		fontFamily:"'Share Tech Mono',serif", 
       		whiteSpace:"pre",
+      	    overflowX:"scroll",
     	}
     	let bestArrangementStyle = {
     		height:"130px",
@@ -66,7 +64,7 @@ export default class ResultScreen extends React.Component {
     	}
     	let allArrangementStyle = {
      		padding:"5px",
-    		fontSize:"13px"
+    		fontSize:"13px",
     	}
     	let bestarrangementItemStyle = {
     		display: "inline-block",
@@ -74,43 +72,46 @@ export default class ResultScreen extends React.Component {
     		transform: "translate(-50%, 0%)",
     		fontSize:"14px"
     	}
-    	if(this.props.results[1] == "")
-    		return(<div></div>)
-    			
-    	let shiftedarrays = (this.props.results[1][1]).split("$$$");
- 		return  (
-		<div style = {resultsContainer}> 
-			<div style = {bestArrangementStyle}>
-				<div style = {{textDecoration:"underline",textAlign:"center",fontSize:"17px",padding:"5px"}}>
-					Strongest Base Pairing Arrangement:  {this.props.results[2]}
-				</div>
-				<div style = {bestarrangementItemStyle}>
-					{this.props.results[1][0]}
-				</div>
 
+    	let result = this.props.results[1]
+    	if(result.data != null)  
+	 		return  (
+			<div style = {resultsContainer}> 
+				<div style = {bestArrangementStyle}>
+					<div style = {{textDecoration:"underline",textAlign:"center",fontSize:"17px",padding:"5px"}}>
+						Strongest Base Pairing Arrangement:  {result.name}
+					</div>
+					<div style = {bestarrangementItemStyle}>
+						{result.data.bestArrangement}
+					</div>
+
+				</div>
+	 			<div style = {allArrangementStyle }>
+					<Table 
+							stripped = {true} 
+							bordered = {true}
+							hoverable = {true}>
+				        <thead>
+				          <tr>
+				              <th data-field="id">All Arrangements</th>
+				          </tr>
+				        </thead>
+					    <tbody>
+							{result.data.allArrangement.map(function(listValue,index){	
+									return (<tr key = {index} >
+										      <td>{listValue} </td>
+										    </tr>
+									)
+							})}
+			        	</tbody>
+			      	</Table>
+				</div>
 			</div>
- 			<div style = {allArrangementStyle }>
-				<Table responsive = {true} 
-						stripped = {true} 
-						bordered = {true}
-						hoverable = {true}>
-			        <thead>
-			          <tr>
-			              <th data-field="id">All Arrangements</th>
-			          </tr>
-			        </thead>
-				    <tbody>
-						{shiftedarrays.map(function(listValue,index){	
-								return (<tr key = {index} >
-									      <td>{listValue} </td>
-									    </tr>
-								)
-						})}
-		        	</tbody>
-		      	</Table>
-			</div>
-		</div>
-		)
+			)
+		else
+		{
+			return(<div></div>)
+		}
 	}
 
 
@@ -127,29 +128,29 @@ export default class ResultScreen extends React.Component {
       		fontFamily:"'Share Tech Mono',serif", 
       		whiteSpace:"pre",
       		marginTop:"-1px",
-      		padding:"40px"
+      		padding:"40px",
+
     	}
     	let bodyStyle = {
      		padding:"10px",
+     	    overflow:"scroll"
     	}
     	let results = [];
     	let title = "";
-    	if(this.props.results[1].length > 0 && this.state.fullAnalysisDisplay == 0) //components
-    	{
-    		title = "Components Analysis/Comparison";
-    		results = this.props.results[1];
+
+    	if(this.props.results[1].comp_list.length > 0 && this.state.fullAnalysisDisplay == 0){ //components
+    		title = "Components Analysis/Comparison"
+    		results = this.props.results[1].comp_list;
     	}
 
-    	if(this.props.results[2].length > 0 && this.state.fullAnalysisDisplay == 1) //fullstrand
-    	{
+    	if(this.props.results[1].full_list.length > 0 && this.state.fullAnalysisDisplay == 1){ //fullstrand
     		title = "Full Strands Analysis/Comparison";
-    		results = this.props.results[2];
+    		results = this.props.results[1].full_list;
     	}
-
 
 		return  (
 			<div style = {resultsContainer}> 
-				<div style = {{paddingLeft:"520px"}}>
+				<div style = {{textAlign:"right"}}>
 					<Row >
 						<Input 		
 							name="display" 
@@ -172,7 +173,7 @@ export default class ResultScreen extends React.Component {
 				</div>
 	 
 	 			<div style = {bodyStyle }>
-					<Table responsive = {true} 
+					<Table 
 							stripped = {true} 
 							bordered = {true}
 							hoverable = {true}>
@@ -184,7 +185,10 @@ export default class ResultScreen extends React.Component {
 					    <tbody style = {{fontSize:"15px"}}>
 							{results.map(function(listValue,index){	
 									return (<tr key = {index} >
-										      <td>{listValue} </td>
+										      <td>
+										      {listValue.header+"\n"}
+										      {listValue.result}
+										      </td>
 										    </tr>
 									)
 							})}
@@ -200,19 +204,14 @@ export default class ResultScreen extends React.Component {
 
 	loadresults()
 	{		
+		let status = this.props.results[0];
 
-		if(this.props.results[0] == "PRINT")
-		{
+		if(status == "PRINT")
 			return this.loadprintscreen();
-		}
-		if(this.props.results[0] == "COMPARE")
-		{
+		if(status == "COMPARE")
 			return this.loadcomparescreen();
-		}
-		if(this.props.results[0] == "FULLANALYSIS")
-		{
+		if(status == "FULLANALYSIS")
 			return this.loadfullanalysis();
-		}
 	}
 	
 	render()

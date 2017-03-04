@@ -5,7 +5,7 @@ import StrandComponentsDisplay from "../../Pages/DevelopmentStage/StrandComponen
 import FullStrandDisplay from "../../Pages/DevelopmentStage/FullStrandDisplay";
 import StrandComponentInput from "../../Pages/DevelopmentStage/StrandComponentInput";
 import WorkspaceNav from "../../Pages/DevelopmentStage/WorkspaceNavigation";
-
+import {Row} from 'react-materialize';
 //STORE
 import ProjectStore from "../../Store/ProjectStore";
 
@@ -72,7 +72,7 @@ export default class DevelopmentStageLayout extends React.Component {
 
 	render(){
 		let topstyle = {
-			padding:"30px 0px 0px 75px",
+			padding:"50px 0px 0px 65px",
 			backgroundColor:"#4b626d",
 			boxShadow:" 9px 0px 12px -4px rgba(0,0,0,0.56)",
 			textAlign:"left",
@@ -87,23 +87,25 @@ export default class DevelopmentStageLayout extends React.Component {
 		}
 
 		return(		
-		<div style = {{width:"90vw",margin:"auto"}}>
-			<div style = {topstyle} >
-				<div style = {{color:"#f9ead1",fontSize:"50px",padding:"20px 75px 15px 0px"}}> 
-					PROJECT WORKSPACE 
-
-
-					<div style = {{color:"#f9ead1",paddingTop:"15px",fontSize:"16px",height:"56px"}}>
-						Use this space to input your desired strands components and put those components together to create your desired strands. 
-					</div>
-				</div>
-				<WorkspaceNav activeDisplay = {this.state.activedisplay}/>
-			</div>
+		<Row>
+			<div className = "col s1"> </div>
 			
-			<div style  = {bottomstyle}>
-				{this.ComponentDisplay()}
+			<div className = "col s10">
+				<div style = {topstyle} >
+					<div style = {{color:"#f9ead1",fontSize:"35px",paddingRight:"65px"}}> 
+						PROJECT WORKSPACE 
+						<div style = {{color:"#f9ead1",paddingTop:"15px",fontSize:"14px",paddingBottom:"20px"}}>
+							Use this space to input your desired strands components and put those components together to create your desired strands. 
+						</div>
+					</div>
+					<WorkspaceNav activeDisplay = {this.state.activedisplay}/>
+				</div>
+				
+				<div style  = {bottomstyle}>
+					{this.ComponentDisplay()}
+				</div>
 			</div>
-		</div>
+		</Row>
 		);
 	}
 }

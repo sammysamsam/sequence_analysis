@@ -8,8 +8,6 @@ class ProjectStore extends EventEmitter{
 
 		this.component_StrandList = [];
 		this.full_StrandList = [];
-		this.conditions = {Salt:"Na", Concentration:1.0};
-
 		this.workspaceDisplay = "1";
 		this.dataAnalysis_Results = ["",""];
 
@@ -37,7 +35,7 @@ class ProjectStore extends EventEmitter{
 	}
 	getJSONProjectData()
 	{
-		let data = JSON.stringify({C:this.conditions,CL:this.component_StrandList,FSL:this.full_StrandList}); 
+		let data = JSON.stringify({CL:this.component_StrandList, FSL:this.full_StrandList}); 
 		return data;
 	}
 	
@@ -63,7 +61,6 @@ class ProjectStore extends EventEmitter{
 	{
 		this.component_StrandList = data.CL;
 		this.full_StrandList = data.FSL;
-		this.conditions = data.C;
 	}
 
 // 
@@ -183,76 +180,61 @@ class ProjectStore extends EventEmitter{
  
  	fullAnalysis()
  	{
-
 		this.backendStatus = true;
-		this.emit("Update_Backend_Status");
+		let strandlistStoreReference = this;
+ 		return axios.post('/DNASequenceProgram/CompareAll', {
+ 			componentlist: this.component_StrandList,
+ 			fullstrandlist: this.full_StrandList
+ 		}).then(function(response){
 
-		try
-		{
-			let strandlistStoreReference = this;
-	 		return axios.post('/DNASequenceProgram/CompareAll', {
-	 			componentlist: this.component_StrandList,
-	 			fullstrandlist: this.full_StrandList
-	 		}).then(function(response){
-	 			strandlistStoreReference.backendStatus = false;
-				strandlistStoreReference.emit("Update_Backend_Status");
-
-				strandlistStoreReference.dataAnalysis_Results = ["FULLANALYSIS",response.data.result1,response.data.result2];
-				strandlistStoreReference.emit("Update_Results");	
-
-	 		}).catch(function (error){
-	 			strandlistStoreReference.backendStatus = false;
-				strandlistStoreReference.emit("Update_Backend_Status");
-	 			console.log(error);
-	 		});
-		}catch(e)
-		{
-			strandlistStoreReference.backendStatus = false;
+ 			strandlistStoreReference.backendStatus = false;
 			strandlistStoreReference.emit("Update_Backend_Status");
-			console.log(e);
-		}
+
+			strandlistStoreReference.dataAnalysis_Results = ["FULLANALYSIS",{full_list:response.data.full,comp_list:response.data.comp}];
+			strandlistStoreReference.emit("Update_Results");	
+
+ 		}).catch(function (error){
+ 			strandlistStoreReference.backendStatus = false;
+			strandlistStoreReference.emit("Update_Backend_Status");
+ 			console.log(error);
+ 		});
+
+
  	}
 
 	compareStrands(strandsToCompare)
 	{
-		try{
-			var strandlistStoreReference = this;
-			let name = strandsToCompare[0].name +" vs "+strandsToCompare[1].name;
+		var strandlistStoreReference = this;
+		let name = strandsToCompare[0].name +" vs "+strandsToCompare[1].name;
 
-			if(strandsToCompare[0].fiveprime ==  "3' to 5'")
-				strandsToCompare[0].components.reverse();
-			if(strandsToCompare[1].fiveprime ==  "3' to 5'")
-				strandsToCompare[1].components.reverse();
+		if(strandsToCompare[0].fiveprime ==  "3' to 5'")
+			strandsToCompare[0].components.reverse();
+		if(strandsToCompare[1].fiveprime ==  "3' to 5'")
+			strandsToCompare[1].components.reverse();
 
-			let strand1 = { 
-				sequence:this.fullStrandSequenceBuilder(strandsToCompare[0].components),
-				direction: strandsToCompare[0].fiveprime 
-			}
-			let strand2 = { 
-				sequence:this.fullStrandSequenceBuilder(strandsToCompare[1].components),
-				direction: strandsToCompare[1].fiveprime 
-			}
-			
-			if(strandsToCompare[0].fiveprime ==  "3' to 5'")
-				strandsToCompare[0].components.reverse();
-			if(strandsToCompare[1].fiveprime ==  "3' to 5'")
-				strandsToCompare[1].components.reverse();
-
-			return axios.post('/DNASequenceProgram/Compare', {
-				salt:this.conditions.Salt,
-	 			concentration: this.conditions.Concentration ,
-				strand1,strand2
-	 		}).then(function(response){
-	 			strandlistStoreReference.dataAnalysis_Results = ["COMPARE",response.data.data,name];
-				strandlistStoreReference.emit("Update_Results");
-
-	 		}).catch(function (error){
-	 			console.log(error);
-	 		});
-		}catch(e)
-		{
-			console.log(e);
+		let strand1 = { 
+			sequence:this.fullStrandSequenceBuilder(strandsToCompare[0].components),
+			fiveprime: strandsToCompare[0].fiveprime 
 		}
+		let strand2 = { 
+			sequence:this.fullStrandSequenceBuilder(strandsToCompare[1].components),
+			fiveprime: strandsToCompare[1].fiveprime 
+		}
+		
+		if(strandsToCompare[0].fiveprime ==  "3' to 5'")
+			strandsToCompare[0].components.reverse();
+		if(strandsToCompare[1].fiveprime ==  "3' to 5'")
+			strandsToCompare[1].components.reverse();
+
+		return axios.post('/DNASequenceProgram/Compare', {
+			strand1,strand2
+ 		}).then(function(response){
+ 			strandlistStoreReference.dataAnalysis_Results = ["COMPARE",{data:response.data,name:name}];
+			strandlistStoreReference.emit("Update_Results");
+
+ 		}).catch(function (error){
+ 			console.log(error);
+ 		});
 	}
 
 
@@ -270,7 +252,6 @@ class ProjectStore extends EventEmitter{
 				break;
 			}
 //
-
 			case "EDIT_WORKSPACE_DISPLAY": {
 				this.workspaceDisplay = action.Display1;
 				this.emit("Change_Workspace_Display");
@@ -339,7 +320,6 @@ class ProjectStore extends EventEmitter{
 				this.emit("Change_Full_Strandlist");
 				break;
 			}
-
 		}
 	}
 

@@ -178,7 +178,7 @@ export default class StrandComponentInput extends React.Component {
 							/>
 
 							<div name = "rad" className = "col s12 m6 l2">
-								<p for = "rad" style = {{color:"#9e9e9e",paddingLeft:"10px",whiteSpace:"nowrap",fontSize:"10px"}}> 
+								<p  style = {{color:"#9e9e9e",paddingLeft:"10px",whiteSpace:"nowrap",fontSize:"10px"}}> 
 									Complement Exists:
 								</p>
 								<Input 					

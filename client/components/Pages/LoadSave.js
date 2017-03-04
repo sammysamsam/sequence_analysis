@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import {Button,TextArea} from 'react-materialize';
 import {Modal,ModalHeader,ModalFooter,ModalBody} from 'elemental';
-//import FileReaderInput from 'react-file-reader-input';
 
 //ACTION
 import * as StrandAction from "../Actions/StrandAction";
@@ -25,16 +24,6 @@ export default class LoadSave extends React.Component {
 						input:""
 					}
 	}
-/*
-	componentWillMount() 
-	{
-		ProjectStore.on()
-	}
-	componentWillUnmount() 
-	{
-		ProjectStore.removeListener();
-	}
-*/
 
 	//output
 

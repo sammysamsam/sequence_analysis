@@ -5,20 +5,14 @@ import image3 from "../../Images/Icons/AnalysisIcon.png";
 import image2 from "../../Images/Icons/SequencerIcon.png";
 import image1 from "../../Images/Icons/WorkspaceIcon.png";
 
-
-
-export default class ProjectNagivationBar extends React.Component {
-
-
-
-	
+export default class ProjectNagivationBar extends React.Component {	
 	render()
 	{
 		const ulStyle = {
 			listStyleType:"none",
-			padding:"10",
+			padding:"10px",
 			backgroundColor:"#292B2D",
-			textAlign:"center"
+			textAlign:"right"
 		}
 		const liStyle = {
 			padding:"10px",

@@ -166,29 +166,30 @@ export default class StrandComparer extends React.Component {
 			fontFamily:"'Share Tech Mono',serif",
 			textAlign:"center"
 		}
-		if(!(this.state.output[1].length == 0))
+		if(this.state.output.data != null)
 		{
-			let shiftedarrays = this.state.output[1][1].split("$$$");
 			return  (
 				<div style = {resultstyle}> 
 					<div style = {bestarrangementstyle}>
 						<div style = {bestarrangementtitlestyle}>
-							Strongest Base Pairing Arrangement:  {this.state.output[0]}
+							Strongest Base Pairing Arrangement:  {this.state.output.name}
 						</div>
 						<div style = {bestarrangementitemstyle}>
-							{this.state.output[1][0]}
+							{this.state.output.data.bestArrangement}
 						</div>
 					</div>
 
 		 			<div style = {allarrangementstyle}>
-						<Table className = "responsive-table striped">
+						<Table 	stripped = {true} 
+								bordered = {true}
+								hoverable = {true}>
 					        <thead>
 					          <tr>
 					              <th data-field="id" style = {{paddingLeft:"30px"}}>All Arrangements</th>
 					          </tr>
 					        </thead>
 						    <tbody>
-								{shiftedarrays.map(function(listValue,index){	
+								{this.state.output.data.allArrangement.map(function(listValue,index){	
 										return (<tr key = {index} >
 											      <td style = {{paddingLeft:"20px"}} >{listValue} </td>
 											    </tr>)
@@ -200,7 +201,9 @@ export default class StrandComparer extends React.Component {
 				)
 		}
 	}
-	
+	//
+
+	///
 	_handleKeyPress(input) 
 	{
 		if (input.key == 'Enter') 

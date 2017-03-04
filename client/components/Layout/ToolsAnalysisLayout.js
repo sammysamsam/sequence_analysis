@@ -46,7 +46,7 @@ export default class ToolsAnalysis extends React.Component {
 		else{
 				return(
 				<div>
-					<p style = {{color:"#ffab91",fontStyle:"italic",width:"350px",margin:"auto",textAlign:"center",fontSize:"13px"}}> 
+					<p style = {{color:"#ffab91",fontStyle:"italic",textAlign:"center",fontSize:"13px",paddingTop:"20px"}}> 
 						Find Full Analysis of Base Pairing Between Two Strands
 					</p>
 					<StrandComparer/>
@@ -170,7 +170,3 @@ export default class ToolsAnalysis extends React.Component {
 }
 						
 
-
-/*
-
-						*/

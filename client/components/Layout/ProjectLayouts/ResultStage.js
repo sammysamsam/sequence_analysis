@@ -1,7 +1,7 @@
 import React from "react";
 import StrandComparison from "../../Pages/ResultStage/StrandComparison";
 import ResultStageButtons from "../../Pages/ResultStage/ResultStageButtons";
-
+import {Row} from 'react-materialize';
 
 //STORE
 import ProjectStore from "../../Store/ProjectStore";
@@ -62,25 +62,30 @@ export default class ResultStateLayout extends React.Component {
 			zIndex:"10"
 		}
 		return(
-		<div style = {{width:"90vw",margin:"auto"}}>
-			<div style = {topstyle}>
-				<div style = {{color:"#f9ead1",fontSize:"50px",padding:"20px 75px 25px 75px"}}> 
-				
-						DATA ANALYSIS 
+		<Row>
+
+			<div className = "col s1"> </div>
+			
+			<div className = "col s10">
+				<div style = {topstyle}>
+					<div style = {{color:"#f9ead1",fontSize:"45px",padding:"20px 75px 25px 75px"}}> 
 					
-					<div style = {{color:"#f9ead1",paddingTop:"15px",fontSize:"16px",paddingBottom:"15px"}}>
-						Calculate base-pair matching between two strands or all strands (components vs components / full strand vs full strand) and printing out your strands.  
+							DATA ANALYSIS 
+						
+						<div style = {{color:"#f9ead1",paddingTop:"15px",fontSize:"16px",paddingBottom:"15px"}}>
+							Calculate base-pair matching between two strands or all strands (components vs components / full strand vs full strand) and printing out your strands.  
+						</div>
+					</div>
+					<div style = {{marginTop:"10px"}}>
+						<ResultStageButtons status = {this.state.Backend_Status}/>
 					</div>
 				</div>
-				<div style = {{marginTop:"10px"}}>
-					<ResultStageButtons status = {this.state.Backend_Status}/>
+
+				<div style = {bottomstyle} className= "animated fadeIn">
+					<StrandComparison fulllist = {this.state.Full_List} componentlist = {this.state.Component_List} results = {this.state.Results} status = {this.state.Backend_Status}/>
 				</div>
 			</div>
-
-			<div style = {bottomstyle} className= "animated fadeIn">
-				<StrandComparison fulllist = {this.state.Full_List} componentlist = {this.state.Component_List} results = {this.state.Results} status = {this.state.Backend_Status}/>
-			</div>
-		</div>
+		</Row>
 		);
 	}
 }

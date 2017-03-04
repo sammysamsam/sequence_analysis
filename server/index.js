@@ -8,7 +8,7 @@ import webpackConfig from '../webpack.config.dev';
 import bodyParser from 'body-parser';
 import axios from "axios";
 
-import AlgorithmRouter from './algorithm';
+import AlgorithmRouter from './Middleware_OhayonBackend';
 
 let app = express();
 
@@ -21,7 +21,6 @@ app.use(webpackMiddleware(compiler));
 app.get('/*',(req,res) => {
 	res.sendFile(path.join(__dirname, '../client/index.html'));
 });
-// set the port of our application
 
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;

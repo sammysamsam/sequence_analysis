@@ -18,7 +18,7 @@ export default class ProjectLayoutMain extends React.Component {
 			height:"40px",
 			padding:"2.5px 0px 0px 75px",
 			margin:"0px",
-			fontSize:"13px",
+			fontSize:"11px",
 			width:"100%",
 		}
 
@@ -29,7 +29,9 @@ export default class ProjectLayoutMain extends React.Component {
 						<i style = {{position:"relative",top:"6px",marginRight:"10px"}}className="material-icons">
 							home
 						</i>
+						<span className = "hide-on-small-only">
 						Optimizing Hybridization AnalYsis Of Nucleotides Program 
+						</span>
 					</Link>
 
 					<LoadSave/>

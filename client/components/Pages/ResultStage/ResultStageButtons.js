@@ -41,59 +41,59 @@ export default class ResultStageButtons extends React.Component {
 	{
 		let analysisButtonStyle = {
 			fontFamily:"'Roboto',serif",
-			marginLeft:"60px",
 			cursor:"pointer",
-			height:"47px",
-			width:"170px", 
+			width:"20%",
 			paddingTop:"7px",
+			paddingBottom:"9px",
 			textAlign:"center",
 			color:"#4e4e4f",
-			fontSize:"14px",
+			fontSize:"13px",
 			display:"inline-block"
 		}
 		let analysisButtonOffStyle = {
 			fontFamily:"'Roboto',serif",
-			marginLeft:"60px",
-			height:"47px",
-			width:"170px", 
+			width:"20%",
 			paddingTop:"7px",
+			paddingBottom:"9px",
 			textAlign:"center",
 			color:"#c6c6c6",
-			fontSize:"14px",
+			fontSize:"13px",
 			display:"inline-block"
 		}
 		let iconStyle = {
 			position:"relative",
 			top:"6px",
-			paddingRight:"10px"
+			paddingRight:"10px",
+			fontSize:"22px",
+			color:"#e2914a"
 		}
 		let containerStyle  = {
 			background:"rgba(255,255,255,.9)",
+
 		}
-		console.log("buttons "+this.props.status);
 		if(this.props.status)
 			return (	
 				<div style = {containerStyle}>
 					<div style = {analysisButtonOffStyle} >  
 						<i style = {iconStyle} className="material-icons">compare</i>
-						Complete Analysis
+						<span className = "hide-on-small-only">Complete Analysis</span>
 					</div>
 
 					<div style = {analysisButtonOffStyle}>  
 						<i style = {iconStyle} className="material-icons">compare </i>
-						2 Strand Comparison
+						<span className = "hide-on-small-only">2 Strand Comparison</span>
 					</div>
 					<div style = {analysisButtonOffStyle} >  
 						<i style = {iconStyle} className="material-icons">print</i>
-						Print Full Strands
+						<span className = "hide-on-small-only">Print Full Strands</span>
 					</div>
 					<div style = {analysisButtonOffStyle} >  
 						<i style = {iconStyle} className="material-icons">print</i>
-						Print Components
+						<span className = "hide-on-small-only">Print Components</span>
 					</div>
 					<div style = {analysisButtonOffStyle}  >  
 						<i style = {iconStyle} className="material-icons">invert_colors</i>
-						Melting Point
+						<span className = "hide-on-small-only">Melting Point</span>
 					</div>
 				</div>
 			)
@@ -106,7 +106,7 @@ export default class ResultStageButtons extends React.Component {
 						<i style = {iconStyle} className="material-icons">
 							compare
 						</i>
-						Complete Analysis
+						<span className = "hide-on-small-only">Complete Analysis</span>
 					</div>
 
 					<div style = {analysisButtonStyle} className= "hvr-underline-from-center" onClick = {this.callcomparelist}>  
@@ -114,28 +114,28 @@ export default class ResultStageButtons extends React.Component {
 						<i style = {iconStyle} className="material-icons">
 							compare
 						</i>
-						2 Strand Comparison
+						<span className = "hide-on-small-only">2 Strand Comparison</span>
 					</div>
 					<div style = {analysisButtonStyle}  className= "hvr-underline-from-center" onClick = {this.callprintfullstrands}>  
 						
 						<i style = {iconStyle} className="material-icons">
 							print
 						</i>
-						Print Full Strands
+						<span className = "hide-on-small-only">Print Full Strands</span>
 					</div>
 					<div style = {analysisButtonStyle}  className= "hvr-underline-from-center" onClick = {this.callprintcomponents}>  
 						
 						<i style = {iconStyle} className="material-icons">
 							print
 						</i>
-						Print Components
+						<span className = "hide-on-small-only">Print Components</span>
 					</div>
 					<div style = {analysisButtonStyle}  className= "hvr-underline-from-center" >  
 						
 						<i style = {iconStyle} className="material-icons">
 							invert_colors
 						</i>
-						Melting Point
+						<span className = "hide-on-small-only">Melting Point</span>
 					</div>
 				</div>
 			)

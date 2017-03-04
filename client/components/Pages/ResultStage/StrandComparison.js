@@ -2,7 +2,6 @@ import React from "react";
 import ResultScreen from "./ResultScreen";
 import Select from 'react-select';
 import {Button,Row} from 'react-materialize';
-import Spinner from 'react-spinkit';
 
 //ACTION
 import * as StrandAction from "../../Actions/StrandAction";
