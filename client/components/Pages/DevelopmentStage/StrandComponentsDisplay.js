@@ -46,7 +46,6 @@ export default class StrandComponentsDisplay extends React.Component {
 		}
 
 		let tableBodyStyle ={
-			height:"557px",
 			paddingTop:"20px",
 			marginTop:"1px"
 		}
@@ -80,9 +79,8 @@ export default class StrandComponentsDisplay extends React.Component {
 						<BootstrapTable  
   							tableStyle = {{backgroundColor:"#f2f4f7",opacity:".95"}}	
   							data={this.props.Component_list}   
-  							height="405px"
+  							height="450px"
   							condensed = {true} 
-  							pagination={true} 
   							striped={true} 
   							deleteRow={!this.props.status}
   							selectRow={selectRowProp}	
@@ -91,13 +89,12 @@ export default class StrandComponentsDisplay extends React.Component {
 	    			    	<TableHeaderColumn 
 	    			    		dataField="name" 
 	    			    		isKey={true} 
-	    			    		width = "200px"
 	    			    		>
 	    			    		Name
 	    			    	</TableHeaderColumn>
 
 
-	 			    		<TableHeaderColumn width = "110px" dataField="complement"> 
+	 			    		<TableHeaderColumn dataField="complement"> 
 	 			    			Complement 
 	 			    		</TableHeaderColumn>
 

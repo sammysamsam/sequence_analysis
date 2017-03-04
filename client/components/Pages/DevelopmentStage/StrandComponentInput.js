@@ -19,8 +19,6 @@ export default class StrandComponentInput extends React.Component {
 		this.state = {	name: "", 
 						complement: "true",
 						sequence: "",
-
-
 					};
 	}
 
@@ -137,7 +135,7 @@ export default class StrandComponentInput extends React.Component {
 	render()
 	{
 		let bodyStyle = {
-			padding:"15px 15px 20px 15px",
+			padding:"15px 0px 20px 0px",
 			marginTop:"1px",
 			color:"#37474f",
 		}

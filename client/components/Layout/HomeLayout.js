@@ -34,14 +34,14 @@ export default class HomeLayout extends React.Component {
 						</span>
 				</div>
 
-				<div style = {{backgroundColor:"#155151"}} > 
+				<div style = {{backgroundColor:"#155151",minHeight:"90vh"}} > 
 					<Row>
 						<div className = "hide-on-small-only col m6 l4" style = {{padding:"0"}}>
 							<img style = {yoel} src={'http://bestanimations.com/Science/Biology/DNA/dna/dna-rna-chromosomes-double-helix-rotating-animated-gif-8.gif'} alt="YOEL" className = "img-responsive"/>
 						</div>
 
 						<div className = "col s12 m6 l8" style = {{margin:"0"}}>
-							<div style = {{padding:"100px 0px 100px 20px",textAlign:"center"}} className= "animated fadeInUp" >
+							<div style = {{padding:"22vh 0px 100px 20px",textAlign:"center"}} className= "animated fadeInUp" >
 
 								<h1 style = {{color:"#ff7043",padding:"8px 20px 0px 20px"                   }}> 
 									OHAYON

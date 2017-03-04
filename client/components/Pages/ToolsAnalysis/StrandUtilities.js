@@ -145,9 +145,9 @@ export default class StrandUtilities extends React.Component {
 		}
 		return (bases.map((base,index) => {
 			if(alt_array.includes(index))
-				return(<span id = {index} style = {highlightedBase}>{base}</span>)
+				return(<span key = {index} style = {highlightedBase}>{base}</span>)
 			else
-				return (<span id = {index} >{base}</span>)
+				return (<span key = {index} >{base}</span>)
 		}))
 	}
 	renderOutput(){
@@ -226,7 +226,7 @@ export default class StrandUtilities extends React.Component {
 						/>
 					</div>
 
-					<div className = "col s12" style = {{background:"rgba(0, 0, 0,.15)",padding:"15px",minHeight:"110px",overflowWrap:"break-word"}}> 
+					<div className = "col s12" style = {{background:"rgba(0, 0, 0,.15)",padding:"15px",minHeight:"250px",overflowWrap:"break-word",fontSize:"19px"}}> 
 						{this.renderOutput()}
 					</div>
 				</Row>
