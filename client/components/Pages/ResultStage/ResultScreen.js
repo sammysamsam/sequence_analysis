@@ -25,7 +25,8 @@ export default class ResultScreen extends React.Component {
 					Strand Order [5' to 3']
 				</h6>
 				<div style = {{overflowWrap: "break-word"}}>
-					<Table className = "responsive-table">
+					<Table	bordered = {true}
+							hoverable = {true}>
 				        <thead>
 				          <tr>
 				              <th data-field="id">Name</th>

@@ -314,11 +314,11 @@ export default class StrandComparer extends React.Component {
 							/>
 						</div>	
 
-						<div className = "col s12"style = {{textAlign:"center"}}>
+						<div className = "col s12" style = {{textAlign:"center"}}>
 							<Button onClick = {this.clear}> CLEAR</Button>
 							<Button style = {{marginLeft:"20px"}} onClick = {this.mismatchfunction}> SUBMIT</Button>
 						</div>
-						<div className = "col s12" style = {{marginTop:"20px", minHeight:"350px",background:"rgba(0,0,0,.15)"}}> 
+						<div className = "col s12" style = {{marginTop:"20px", minHeight:"350px",background:"rgba(150,150,150,.1)"}}> 
 							{this.loadcomparescreen()} 
 						</div>
 					</Row>

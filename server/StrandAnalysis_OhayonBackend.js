@@ -3,10 +3,17 @@ exports.compareStrands = function(strand1, strand2, callback)
 {
 	try{
 		var result = []
-		if (strand1.loop)
-			strand1.sequence = strand1.sequence+strand1.sequence
-		if (strand2.loop)
-			strand2.sequence = strand2.sequence+strand1.sequence
+		//console.log("\n\nSTRAND : "+JSON.stringify(strand1))
+		if (strand1.fiveprime == "loop")
+			if(strand1.sequence.length > 5)
+				strand1.sequence = strand1.sequence+strand1.sequence.substring(0,5)
+			else
+				strand1.sequence = strand1.sequence+strand1.sequence			
+		if (strand2.fiveprime = "loop")
+			if(strand2.sequence.length > 5)
+				strand2.sequence = strand2.sequence+strand2.sequence.substring(0,5)
+			else
+				strand2.sequence = strand2.sequence+strand2.sequence
 		var result = mismatch(strand1, strand2, 4)
 
 		//console.log(result.bestArrangement)
@@ -126,7 +133,7 @@ var mismatch = function(strand1, strand2, hitlimit){
 	var results_print_form = []
 	var shiftA_best = []
 	var shiftB = []
-
+	var highestscore = -1
 	for(var i = 4; i < s1_len+s2_len; i ++)
 	{
 		var shiftedbasearray = baseArrayMaker(strand1,strand2,i)
@@ -135,7 +142,6 @@ var mismatch = function(strand1, strand2, hitlimit){
 		var full_length = s1_len+s2_len*2
 		var consecCounter = 0
 		var hitScore = 0
-		var highestscore = 0
 		var singleMismatch = false
 		for(var k = s2_len-1; k < s1_len+s2_len+1; k++)
 		{
@@ -170,7 +176,7 @@ var mismatch = function(strand1, strand2, hitlimit){
 		}
 		results_print_form.push(bestHitStringMaker(strand1, strand2, shiftA,shiftB))
 
-		if ((highestscore < hitScore) || i == 4)
+		if (highestscore <= hitScore)
 		{
 			highestscore = hitScore
 			shiftA_best = shiftA
