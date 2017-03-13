@@ -44,13 +44,53 @@ export default class StrandUtilities extends React.Component {
 	}
 	reversemaker(e)
 	{
+
 		let reverse = e.split("").reverse();
 		reverse = reverse.join("");
 		return reverse
 	}
 
+	ATcontent(e)
+	{
+		let AT = 0
+		let input = e.split('')
+		for(let i = 0 ; i < e.length; i ++)
+		{	
+			let string1 = input[i];
+			if((string1.toUpperCase() == "A") || (string1.toUpperCase() == "T" ))
+				AT ++
+		}	
+		if(AT == 0)
+			return "n/a"
+		AT = AT/e.length
+		return AT
+	}
 
 //  RENDER METHODS
+	renderPercentage(){
+
+
+		let AT = this.ATcontent(this.state.input)
+		let GC = 0
+		if(AT == 'n/a'){
+			AT = 0
+		}
+		else{
+			GC = (( 1 - AT ) * 100).toFixed(2)
+			AT = (AT*100).toFixed(2)
+		}	
+		let labelStyle = {
+			padding:"10px",
+			fontFamily: "'Anaheim', serif " ,
+			fontSize:"12px",
+			color:"#9e9e9e"
+		}
+		return(
+			<div style = {labelStyle} className = "col s12"> 
+				GC content: {GC}% <br/> AT content: {AT}%
+			</div>
+			)
+	}
 
 	renderPolyPurine(bases){
 		let highlightedBase = {
@@ -191,6 +231,7 @@ export default class StrandUtilities extends React.Component {
 						type = "text"
 						onChange = {this.handleinput}
 					/>
+					{this.renderPercentage()}
 					<div style = {labelStyle} className = "col s12"> 
 						<Input 					
 							name="comp/rev" 		
