@@ -50,35 +50,31 @@ export default class StrandUtilities extends React.Component {
 		return reverse
 	}
 
-	ATcontent(e)
+	AT_CG_content(e)
 	{
 		let AT = 0
+		let GC = 0
+		if(e == "")
+			return [0,0]
 		let input = e.split('')
 		for(let i = 0 ; i < e.length; i ++)
 		{	
 			let string1 = input[i];
 			if((string1.toUpperCase() == "A") || (string1.toUpperCase() == "T" ))
 				AT ++
+			if((string1.toUpperCase() == "C") || (string1.toUpperCase() == "G" ))
+				GC ++
 		}	
-		if(AT == 0)
-			return "n/a"
-		AT = AT/e.length
-		return AT
+		
+		AT = ((AT/e.length)*100).toFixed(2)
+		GC = ((GC/e.length)*100).toFixed(2)
+		return [AT,GC]
 	}
 
 //  RENDER METHODS
 	renderPercentage(){
+		let content = this.AT_CG_content(this.state.input)
 
-
-		let AT = this.ATcontent(this.state.input)
-		let GC = 0
-		if(AT == 'n/a'){
-			AT = 0
-		}
-		else{
-			GC = (( 1 - AT ) * 100).toFixed(2)
-			AT = (AT*100).toFixed(2)
-		}	
 		let labelStyle = {
 			padding:"10px",
 			fontFamily: "'Anaheim', serif " ,
@@ -87,7 +83,7 @@ export default class StrandUtilities extends React.Component {
 		}
 		return(
 			<div style = {labelStyle} className = "col s12"> 
-				GC content: {GC}% <br/> AT content: {AT}%
+				GC content: {content[0]}% <br/> AT content: {content[1]}%
 			</div>
 			)
 	}
