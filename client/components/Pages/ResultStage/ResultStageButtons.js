@@ -46,7 +46,7 @@ export default class ResultStageButtons extends React.Component {
 			paddingTop:"7px",
 			paddingBottom:"9px",
 			textAlign:"center",
-			color:"#4e4e4f",
+			color:"#5d5f60",
 			fontSize:"13px",
 			display:"inline-block"
 		}
@@ -65,7 +65,7 @@ export default class ResultStageButtons extends React.Component {
 			top:"6px",
 			paddingRight:"10px",
 			fontSize:"22px",
-			color:"#e2914a"
+			color:"#444444"
 		}
 		let containerStyle  = {
 			background:"rgba(255,255,255,.9)",
