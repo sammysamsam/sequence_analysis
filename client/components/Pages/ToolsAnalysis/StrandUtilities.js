@@ -56,10 +56,9 @@ export default class StrandUtilities extends React.Component {
 		let GC = 0
 		if(e == "")
 			return [0,0]
-		let input = e.split('')
 		for(let i = 0 ; i < e.length; i ++)
 		{	
-			let string1 = input[i];
+			let string1 = e[i];
 			if((string1.toUpperCase() == "A") || (string1.toUpperCase() == "T" ))
 				AT ++
 			if((string1.toUpperCase() == "C") || (string1.toUpperCase() == "G" ))
@@ -71,7 +70,20 @@ export default class StrandUtilities extends React.Component {
 		return [AT,GC]
 	}
 
-//  RENDER METHODS
+	palindromeFinder(str){
+		var i, j, result = [];
+
+		for (i = 0; i < str.length; i++) {
+		    for (j = i + 3; j < str.length + 1; j++) {
+		        let curr_substring = str.slice(i, j)
+		    	if (curr_substring == this.reversemaker(this.complementmaker(curr_substring)))
+		    		result.push(curr_substring)
+		    }
+		}
+		return result;
+	}
+	//  RENDER METHODS
+
 	renderPercentage(){
 		let content = this.AT_CG_content(this.state.input)
 
@@ -85,6 +97,15 @@ export default class StrandUtilities extends React.Component {
 			<div style = {labelStyle} className = "col s12"> 
 				GC content: {content[0]}% <br/> AT content: {content[1]}%
 			</div>
+			)
+	}
+
+	renderPalindromes(){
+		if (this.state.input.length < 3)
+			return (<div>No Palindromes Present</div>)
+		let palindromeList = this.palindromeFinder(this.state.input)
+		return(
+			<div> {palindromeList.toString()} </div>
 			)
 	}
 
@@ -187,23 +208,24 @@ export default class StrandUtilities extends React.Component {
 		}))
 	}
 	renderOutput(){
-		if(this.state.conversiontype == 'comp'){
+		if(this.state.conversiontype == 'comp')
 			return (this.complementmaker(this.state.input))
-		}
 
-		if(this.state.conversiontype == 'rev'){
-			return (this.reversemaker(this.state.input))	
-		}
+		if(this.state.conversiontype == 'rev')
+			return (this.reversemaker(this.state.input))
+
+		if(this.state.conversiontype == 'palin')
+			return (this.renderPalindromes())
 
 		let bases = this.state.input.split("")
 
-		if(this.state.conversiontype == 'poly'){
+		if(this.state.conversiontype == 'poly')
 			return (this.renderPolyPurine(bases))
-		}
 
-		if(this.state.conversiontype == 'alt')	{
+		if(this.state.conversiontype == 'alt')	
 			return (this.renderAlternatingPP(bases))
-		}
+
+
 	}
 
 
@@ -247,6 +269,14 @@ export default class StrandUtilities extends React.Component {
 						/>
 						<Input 					
 							name="comp/rev" 		
+							defaultChecked = {false}
+							value="palin"  
+							type="radio"
+							label = "Palindrome"
+							onClick = {this.outputpicker} 
+						/>
+						<Input 					
+							name="comp/rev" 		
 							defaultChecked = {false} 
 							value="poly"  
 							type="radio"
@@ -261,6 +291,7 @@ export default class StrandUtilities extends React.Component {
 							label = "Highlight Alternating Purine-Pyrimidine"
 							onClick = {this.outputpicker} 
 						/>
+
 					</div>
 
 					<div className = "col s12" style = {{background:"rgba(0, 0, 0,.15)",padding:"15px",minHeight:"250px",overflowWrap:"break-word",fontSize:"19px"}}> 
