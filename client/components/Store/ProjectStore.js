@@ -206,7 +206,7 @@ class ProjectStore extends EventEmitter{
 	{
 		var strandlistStoreReference = this;
 		let name = strandsToCompare[0].name +" vs "+strandsToCompare[1].name;
-
+		console.log(strandsToCompare)
 		if(strandsToCompare[0].fiveprime ==  "3' to 5'")
 			strandsToCompare[0].components.reverse();
 		if(strandsToCompare[1].fiveprime ==  "3' to 5'")

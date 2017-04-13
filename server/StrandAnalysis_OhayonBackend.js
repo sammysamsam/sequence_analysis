@@ -3,24 +3,37 @@ exports.compareStrands = function(strand1, strand2, callback)
 {
 	try{
 		var result = []
-		//console.log("\n\nSTRAND : "+JSON.stringify(strand1))
-		if (strand1.fiveprime == "loop")
+		console.log("\n\nSTRAND : "+JSON.stringify(strand1))
+		console.log("\n\nSTRAND2 : "+JSON.stringify(strand2))
+
+		if (strand1.fiveprime == "loop"){
 			if(strand1.sequence.length > 5)
-				strand1.sequence = strand1.sequence+strand1.sequence.substring(0,5)
+				strand1.sequence = strand1.sequence + strand1.sequence.substring(0,5)
 			else
-				strand1.sequence = strand1.sequence+strand1.sequence			
-		if (strand2.fiveprime = "loop")
+				strand1.sequence = strand1.sequence + strand1.sequence	
+		}		
+		if (strand2.fiveprime == "loop"){
 			if(strand2.sequence.length > 5)
-				strand2.sequence = strand2.sequence+strand2.sequence.substring(0,5)
+				strand2.sequence = strand2.sequence + strand2.sequence.substring(0,5)
 			else
-				strand2.sequence = strand2.sequence+strand2.sequence
+				strand2.sequence = strand2.sequence + strand2.sequence
+		}
+
+		if(strand1.fiveprime == "5' to 3'" || strand1.fiveprime == 'loop'){
+			strand1.sequence = strand1.sequence.split("").reverse().join("");
+		}
+		if(strand2.fiveprime == "3' to 5'"){
+			strand2.sequence = strand2.sequence.split("").reverse().join("");
+		}
+
 		var result = mismatch(strand1, strand2, 4)
 
 		//console.log(result.bestArrangement)
 		//console.log(result.allArrangement.toString())
-		callback(null,result)
+		
+		callback(null, result)
 	}catch(e){
-		callback(e,null)
+		callback(e, null)
 	}
 }
 
@@ -32,14 +45,21 @@ exports.compareAllStrands = function(components, fullStrand, callback)
 		var componentResult = []
 		for(var x = 0; x < components.length;x++)
 		{
-			for(var y = x; y <components.length;y++)
+			for(var y = x+1; y <components.length;y++)
 			{
+
+				components[x].sequence = components[x].sequence.split("").reverse().join("");
+
 				componentResult.push({
 					header: (components[x].name + " vs " + components[y].name),
-					result: mismatch(components[x],components[y]).bestArrangement
+					result: mismatch(components[x], components[y], 4).bestArrangement
 				})
+				
+				components[x].sequence = components[x].sequence.split("").reverse().join("");
 			}
 		}
+
+
 		//full strand vs full strand
 		var fullStrandResult = []
 		for(var x = 0 ; x < fullStrand.length ; x++)
@@ -70,7 +90,7 @@ exports.compareAllStrands = function(components, fullStrand, callback)
 					header: (fs1.name + " vs " + fs2.name),
 					result: mismatch( 
 									  {name: fs1, sequence:seq, fiveprime:true},
-									  {name: fs2, sequence:seq2, fiveprime:true}
+									  {name: fs2, sequence:seq2, fiveprime:true}, 4
 									).bestArrangement
 				})			
 
@@ -123,10 +143,6 @@ var combine = function(components, recipe)
 
 
 var mismatch = function(strand1, strand2, hitlimit){
-	if(!strand1.fiveprime)
-		strand1.sequence = strand1.sequence.split("").reverse().join("");
-	if(strand2.fiveprime)
-		strand2.sequence = strand2.sequence.split("").reverse().join("");
 	
 	var s1_len = strand1.sequence.length
 	var s2_len = strand2.sequence.length

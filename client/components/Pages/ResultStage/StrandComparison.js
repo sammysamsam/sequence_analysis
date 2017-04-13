@@ -89,7 +89,7 @@ export default class StrandComparison extends React.Component {
 		{
 			let name = this.props.componentlist[i].name;
 			strandlist.push({value:[name ],label:name});
-			if(this.props.componentlist[i].complement){
+			if(this.props.componentlist[i].complement == 'true'){
 				strandlist.push({value:[name +"'"],label:name+"'"});
 			}
 		}
@@ -99,7 +99,7 @@ export default class StrandComparison extends React.Component {
 	fullStrandListProcessor()
 	{ 
 		let strandlist = [];
-		for(let i = 0; i < this.props.fulllist.length;i ++)
+		for(let i = 0; i < this.props.fulllist.length; i ++)
 		{
 			let fullstrand = this.props.fulllist[i];
 			strandlist.push({ value:fullstrand , label:fullstrand.name});
