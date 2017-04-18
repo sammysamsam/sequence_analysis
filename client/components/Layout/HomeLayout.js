@@ -7,21 +7,14 @@ export default class HomeLayout extends React.Component {
 	render(){		
 		let yoel = {
 			minHeight:"635px",
-			height:"90vh",
+			height:"92vh",
 		}
 		let linkstyle = {
-			paddingTop:"11px",
-			color:"white" , 
-			backgroundColor:"#ff7043",
-			textAlign:"center",
-			width:"270px",
-			height:"60px",
-			display:"inline-block",
+			color:"#67dbdb" , 
+			border:"solid 1px #1f8484",
 			textDecoration:"none",
-			border:"solid",
-			borderColor:"white",
-			borderWidth:"1px",
-			borderRadius:"10px"
+			marginTop:"10px",
+			padding:"11px 30px 15px 30px",
 		}
 		return(
 			<div style = {{backgroundColor:"#292B2D"}}>
@@ -29,6 +22,7 @@ export default class HomeLayout extends React.Component {
 						<i style = {{position:"relative",top:"6px",marginRight:"10px"}}className="material-icons">
 							account_circle
 						</i>
+
 						<span className = "hide-on-small-only">
 							Optimizing Hybridization AnalYsis Of Nucleotides Program
 						</span>
@@ -40,34 +34,39 @@ export default class HomeLayout extends React.Component {
 							<img style = {yoel} src={'http://bestanimations.com/Science/Biology/DNA/dna/dna-rna-chromosomes-double-helix-rotating-animated-gif-8.gif'} alt="YOEL" className = "img-responsive"/>
 						</div>
 
-						<div className = "col s12 m6 l8" style = {{margin:"0"}}>
-							<div style = {{padding:"22vh 0px 100px 20px",textAlign:"center"}} className= "animated fadeInUp" >
+						<div className = "col s12 m6 l8">
+							<div style = {{padding:"25vh 0px 50px 0px",textAlign:"center"}} className= "animated fadeIn row" >
 
-								<h1 style = {{color:"#ff7043",padding:"8px 20px 0px 20px"                   }}> 
+								<h1 style = {{color:"#c3f7f7"}}> 
 									OHAYON
 								</h1>
-								<p style = {{color:"#ff7043",padding:"8px 20px 0px 20px"}}> 
-									A user-friendly interface for analyzing existing sequences from single or multiple strand sets.  
-								</p>
+
+								<div style = {{color:"#c3f7f7",padding:"12px 20px 0px 20px",fontSize:"18px"}}> 
+									A user-friendly interface for analyzing and comparing sequences from single or multiple DNA strand sets.  
+								</div>
 							</div>
 
-							<div style = {{textAlign:"center"}}>
-								 <div className= "animated fadeInUp" style = {{display:"inline-block",padding:"20px"}}> 
+							<div className = "row" style = {{textAlign:"center", padding:"0px 60px 0px 60px"}}>
+								<div className= "animated fadeInUp col m12 l4 offset-l2"> 
 									
-									<Link className = "z-depth-1 hvr-grow" style = {linkstyle} to = "Project/Workspace">
+									<Link className = "hvr-grow" style = {linkstyle} to = "Project/Workspace">
 										<i style = {{position:"relative",top:"6px",marginRight:"10px"}} className="material-icons">
 											lightbulb_outline
 										</i>
+
 										MULTI-STRAND ANALYSIS
+
 									</Link>  
 								</div> 	
 
-								 <div className= "animated fadeInUp" style = {{display:"inline-block",padding:"20px"}}> 
-								 	<Link className = " z-depth-1 hvr-grow"  style = {linkstyle} to = "QuickAnalysis">
+								 <div className= "animated fadeInUp col m12 l4"> 
+								 	<Link className = "hvr-grow"  style = {linkstyle} to = "QuickAnalysis">
 									 	<i style = {{position:"relative",top:"6px",marginRight:"10px"}}className="material-icons">
 									 		polymer
 									 	</i>
+
 									  	QUICK ANALYSIS
+
 									</Link>	
 								</div>
 							</div>
@@ -76,6 +75,7 @@ export default class HomeLayout extends React.Component {
 				</div>
 
 				<FooterSection/>
+
 			</div>
 
 		);

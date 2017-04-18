@@ -169,11 +169,7 @@ export default class StrandComparison extends React.Component {
  	 	}
 		let compareWorkspaceStyle = {
 			background:"rgba(217, 217, 217,.95)",
-			boxShadow:" 9px 0px 12px -4px rgba(0,0,0,0.56)"	,
 			padding:"0px 20px 20px 20px"
-		}
-		let resultSectionStyle = {
-
 		}
 
 		return(
@@ -213,9 +209,8 @@ export default class StrandComparison extends React.Component {
 				</div>
 			</div>
 
-			<div style={resultSectionStyle}> 
- 				<ResultScreen list = {this.state.comparelist} results = {this.props.results}/>
-			</div>
+ 			<ResultScreen list = {this.state.comparelist} results = {this.props.results}/>
+
 		</div>
 		)
 	}

@@ -16,7 +16,7 @@ export default class ProjectLayoutMain extends React.Component {
 			textDecoration:"none",
 			backgroundColor:"#292B2D",
 			height:"40px",
-			padding:"2.5px 0px 0px 75px",
+			padding:"2.5px 0px 0px 40px",
 			margin:"0px",
 			fontSize:"11px",
 			width:"100%",
@@ -25,7 +25,7 @@ export default class ProjectLayoutMain extends React.Component {
 		return(
 		<div style = {{overflow:"hidden",backgroundImage: 'url('+backgroundImage+')',backgroundSize:"100% 100%"}}>
 			<div style = {headerStyle}> 
-					<Link to="/" style = {{color:"#ff8a65  ",display:"inline-block",cursor:"pointer"}}>
+					<Link to="/" style = {{color:"#ff8a65",display:"inline-block",cursor:"pointer"}}>
 						<i style = {{position:"relative",top:"6px",marginRight:"10px"}}className="material-icons">
 							home
 						</i>
