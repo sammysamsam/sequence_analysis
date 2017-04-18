@@ -15,6 +15,7 @@ export default class HomeLayout extends React.Component {
 			textDecoration:"none",
 			marginTop:"10px",
 			padding:"11px 30px 15px 30px",
+			fontSize:"12px"
 		}
 		return(
 			<div style = {{backgroundColor:"#292B2D"}}>
@@ -41,7 +42,7 @@ export default class HomeLayout extends React.Component {
 									OHAYON
 								</h1>
 
-								<div style = {{color:"#c3f7f7",padding:"12px 20px 0px 20px",fontSize:"18px"}}> 
+								<div style = {{color:"#c3f7f7",padding:"12px 20px 0px 20px",fontSize:"16px"}}> 
 									A user-friendly interface for analyzing and comparing sequences from single or multiple DNA strand sets.  
 								</div>
 							</div>

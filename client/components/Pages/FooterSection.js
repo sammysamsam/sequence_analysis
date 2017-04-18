@@ -8,7 +8,7 @@ export default class FooterSection extends React.Component {
 			color:"#ff8a65",
 			backgroundColor:"#292B2D",
 			paddingLeft:"10px",
-			paddingTop:"2%"
+			paddingTop:"1%"
 		}
 		let githubStyle ={
 			backgroundColor:"#ff7043",
